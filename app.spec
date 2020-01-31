@@ -3,7 +3,7 @@
 block_cipher = None
 
 
-a = Analysis(['app.py'],
+a = Analysis(['appt5.py'],
              pathex=['/home/quyencm/Desktop/test'],
              binaries=[],
              datas=[],
