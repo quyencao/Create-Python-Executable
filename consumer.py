@@ -5,12 +5,12 @@ def on_message(channel, method_frame, header_frame, body):
     print(body)
     channel.basic_ack(delivery_tag=method_frame.delivery_tag)
 
-parameters = pika.URLParameters('amqp://guest:guest@localhost:5672')
+parameters = pika.URLParameters('amqp://guest:guest@54.226.145.124:5672')
 connection = pika.BlockingConnection(parameters)
 channel = connection.channel()
-channel.queue_declare(queue='face_recog')
+channel.queue_declare(queue='publish_queue')
 
-channel.basic_consume('face_recog', on_message)
+channel.basic_consume('publish_queue', on_message)
 try:
     channel.start_consuming()
 except KeyboardInterrupt:
